@@ -1,0 +1,20 @@
+name: Deploy to Cloudflare Workers
+ 
+on:
+  push:
+    branches:
+      - main  # 或者你希望触发部署的分支名
+ 
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Publish to Cloudflare Workers
+        uses: cloudflare/wrangler-action@1.3.0
+        with:
+          apiToken: Qlwtwn-QlDoa_Xzpjo2V_ufY678IpcObeT7HitAF # 使用你在步骤2中生成的API Token
+          accountId: 9419903161379ff8bbf00cb3c19cf825 # Cloudflare账户ID，可以在Dashboard中找到
+          environment: 'production' # 环境名称，例如 'production' 或 'staging'
